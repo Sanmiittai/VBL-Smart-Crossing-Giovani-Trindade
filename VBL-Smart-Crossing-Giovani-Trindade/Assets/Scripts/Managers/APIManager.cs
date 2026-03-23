@@ -34,6 +34,8 @@ public class APIManager : MonoBehaviour
         StartCoroutine(ResetAPIState(false));
     }
 
+    //Sends a Post request that resets the state of the API
+    //If the game was not started, calls the API twice for the current traffic and the next traffic
     IEnumerator ResetAPIState(bool gameStart)
     {
         using (UnityWebRequest request = UnityWebRequest.PostWwwForm(apiReset, ""))
@@ -52,6 +54,7 @@ public class APIManager : MonoBehaviour
         }
     }
 
+    //Sends a Get request to the API and downloads the JSON that is send back
     IEnumerator FetchTrafficStatus()
     {
         using (UnityWebRequest request = UnityWebRequest.Get(apiURL))
@@ -70,6 +73,8 @@ public class APIManager : MonoBehaviour
         }
     }
 
+    //Processes the JSON received from the API into a Traffic Response
+    //and sends the data with the InvokeEvent StatusChanged
     void ProcessAPIResponse(string jsonResponse)
     {
         TrafficResponse data = JsonUtility.FromJson<TrafficResponse>(jsonResponse);

@@ -34,6 +34,7 @@ public class CarManager : MonoBehaviour
         InitializeCars();
     }
 
+    //Instantiates enough cars to fill the pool out of the game playable area
     void InitializeCars()
     {
         for (int i = 0; i < carPoolSize; i++)
@@ -43,6 +44,9 @@ public class CarManager : MonoBehaviour
         }
     }
 
+    //Spawns cars in the level in all current crossings and sets their direction
+    //and position based on the crossing variables
+    //Removes the car from the pool
     void SpawnCarOnLevel(object data = null)
     {
         foreach (var crossing in roads[currentLevel.value - 1].crossings)
@@ -62,6 +66,8 @@ public class CarManager : MonoBehaviour
         }
     }
 
+    //Removes the car from the game when reaching the car limiter
+    //Deactivates the car and puts it back in the pool
     void RemoveCar(object data = null)
     {
         Car carToBeRemoved = (Car)data;

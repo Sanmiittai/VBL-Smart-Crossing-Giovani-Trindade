@@ -44,12 +44,14 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveListener(EventType.GameWin, GameWin);
     }
 
-
+    //Resets the current level on scene start
     void Start()
     {
         currentLevel.value = 1;
     }
 
+    //Advances to the next level, changing the current traffic to the pre-loaded next traffic
+    //Or calling the GameWin event if the last level was cleared
     void AdvanceLevel(object data = null)
     {
         currentLevel.value++;
@@ -59,6 +61,8 @@ public class GameManager : MonoBehaviour
             ChangeCurrentTraffic(nextTraffic);
     }
 
+    //Receives the data from API Manager with the Traffic Response
+    //If it's the first call, calls ChangeCurrentTraffic to set current traffic to received data
     void NewStatusReceived(object data = null)
     {
         if (currentStatus == null)
@@ -71,6 +75,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Updates the current status and next statuses to the received data
+    //Calls the LevelHUDUpdate event to change the level on the HUD
+    //Calls UpdateStatus to update the game current variables to the new status variables
     void ChangeCurrentTraffic(TrafficResponse trafficToChange)
     {
         currentTraffic = trafficToChange;
@@ -92,6 +99,10 @@ public class GameManager : MonoBehaviour
         UpdateStatus(currentStatus, true);
     }
 
+    //Updates the game current variables to the new status variables
+    //Calls the HUDUpdate event o update the hud with the new variables
+    //Calls the AverageSpeedChange to update the cars average speed
+    //If it's the first time being called, calls the APILoaded event to allow the game to start
     void UpdateStatus(Status nextStatus, bool isTrafficChange)
     {
         currentStatus = nextStatus;
@@ -143,6 +154,8 @@ public class GameManager : MonoBehaviour
         CheckNextStatusTime();
     }
 
+    //Checks if the time to change the status for the next status 
+    //has been met, and if true calls UpdateStatus with the next status
     void CheckNextStatusTime()
     {
         nextStatusTimer += Time.deltaTime;
@@ -154,6 +167,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Checks if the maximum time for level completion has been met
+    //and if true calls Game Over event
     void CheckGameOverTime()
     {
         crossingTimer += Time.deltaTime;
@@ -164,6 +179,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Checks if the time to spawn another car has been met
+    //and calls Spawn Car event to spawn a new car in the game
     void CheckSpawnCar()
     {
         spawnTimer += Time.deltaTime;

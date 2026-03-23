@@ -5,9 +5,10 @@ public class Road : MonoBehaviour
 {
     public Crossing[] crossings;
 
+    //Initialize all crossings spawn points
     void Awake()
     {
-        foreach(var crossing in crossings)
+        foreach (var crossing in crossings)
         {
             crossing.InitializeSpawnPoints();
         }
@@ -21,6 +22,7 @@ public class Crossing
     public List<Transform> spawnPoints;
     public Vector3 crossingDirection;
 
+    //Adds every spawn point inside the spawn point parent to the list
     public void InitializeSpawnPoints()
     {
         foreach (Transform spawnPosition in spawnPointParent)

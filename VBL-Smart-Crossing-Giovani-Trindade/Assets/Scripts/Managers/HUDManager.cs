@@ -24,26 +24,28 @@ public class HUDManager : MonoBehaviour
     {
         EventManager.AddListener(EventType.HUDUpdate, InformationUpdate);
         EventManager.AddListener(EventType.LevelHUDUpdate, UpdateLevel);
-        EventManager.AddListener(EventType.GameWin, (object data) => gameStarted = false);
+        EventManager.AddListener(EventType.GameWin, OnHideHud);
         EventManager.AddListener(EventType.GameStart, GameStarted);
-        EventManager.AddListener(EventType.GameOver, OnGameOver);
+        EventManager.AddListener(EventType.GameOver, OnHideHud);
     }
 
     void OnDisable()
     {
         EventManager.RemoveListener(EventType.HUDUpdate, InformationUpdate);
         EventManager.RemoveListener(EventType.LevelHUDUpdate, UpdateLevel);
-        EventManager.RemoveListener(EventType.GameWin, (object data) => gameStarted = false);
+        EventManager.RemoveListener(EventType.GameWin, OnHideHud);
         EventManager.RemoveListener(EventType.GameStart, GameStarted);
-        EventManager.RemoveListener(EventType.GameOver, OnGameOver);
+        EventManager.RemoveListener(EventType.GameOver, OnHideHud);
     }
 
+    //Shows the HUD
     void GameStarted(object data = null)
     {
         hud_Group.alpha = 1;
         gameStarted = true;
     }
 
+    //Constantly updates the remaining level timer and status timer
     void Update()
     {
         if (!gameStarted) return;
@@ -54,18 +56,21 @@ public class HUDManager : MonoBehaviour
         statusTimer -= Time.deltaTime;
     }
 
-    void OnGameOver(object data = null)
+    //Hides the HUD on Game Over and Game Win
+    void OnHideHud(object data = null)
     {
         gameStarted = false;
         hud_Group.alpha = 0;
     }
 
+    //Updates the current level information on the HUD
     public void UpdateLevel(object data = null)
     {
         levelTimer = (float)data;
         currentLevel_Text.text = $"Current Level: {currentLevel.value}";
     }
 
+    //Updates the variables information on the HUD
     public void InformationUpdate(object data = null)
     {
         Status currentStatus = (Status)data;

@@ -16,11 +16,14 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody>();
     }
 
+    //Reads the current direction of the player inputs
     void Update()
     {
         moveDirection = moveReference.action.ReadValue<Vector2>();
     }
 
+    //Moves the player towards the current move direction by the base speed times
+    //the speed multiplier from the weather 
     void FixedUpdate()
     {
         float playerFinalSpeed = playerBaseSpeed * playerSpeedMultiplier.value;
