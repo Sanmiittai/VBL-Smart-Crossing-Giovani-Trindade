@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     float nextStatusTimer;
 
     bool gameStarted;
+    bool gameWon;
 
     Status currentStatus;
 
@@ -29,14 +30,18 @@ public class GameManager : MonoBehaviour
     {
         EventManager.AddListener(EventType.StatusChanged, NewStatusReceived);
         EventManager.AddListener(EventType.LevelAdvance, AdvanceLevel);
+        EventManager.AddListener(EventType.GameStart, (object data) => gameStarted = true);
         EventManager.AddListener(EventType.GameOver, OnGameOver);
+        EventManager.AddListener(EventType.GameWin, GameWin);
     }
 
     void OnDisable()
     {
         EventManager.RemoveListener(EventType.StatusChanged, NewStatusReceived);
         EventManager.RemoveListener(EventType.LevelAdvance, AdvanceLevel);
+        EventManager.RemoveListener(EventType.GameStart, (object data) => gameStarted = true);
         EventManager.RemoveListener(EventType.GameOver, OnGameOver);
+        EventManager.RemoveListener(EventType.GameWin, GameWin);
     }
 
 
@@ -49,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         currentLevel.value++;
         if (currentLevel.value > 5)
-            GameWin();
+            EventManager.InvokeEvent(EventType.GameWin);
         else
             ChangeCurrentTraffic(nextTraffic);
     }
@@ -69,6 +74,7 @@ public class GameManager : MonoBehaviour
     void ChangeCurrentTraffic(TrafficResponse trafficToChange)
     {
         currentTraffic = trafficToChange;
+        currentStatus = currentTraffic.current_status;
 
         if (currentTraffic.predicted_status.Count() > 0)
         {
@@ -83,7 +89,7 @@ public class GameManager : MonoBehaviour
             crossingTimer = 0;
         }
 
-        UpdateStatus(currentTraffic.current_status, true);
+        UpdateStatus(currentStatus, true);
     }
 
     void UpdateStatus(Status nextStatus, bool isTrafficChange)
@@ -112,16 +118,22 @@ public class GameManager : MonoBehaviour
         }
 
         if (!isTrafficChange)
+        {
             nextStatuses.RemoveAt(0);
+        }
+
+        nextStatusTime.value = nextStatuses[0].estimated_time / 1000;
 
         EventManager.InvokeEvent(EventType.HUDUpdate, currentStatus);
         EventManager.InvokeEvent(EventType.AverageSpeedChange);
 
-        nextStatusTime.value = nextStatuses[0].estimated_time / 1000;
+        if (!gameStarted) EventManager.InvokeEvent(EventType.APILoaded);
     }
 
     void Update()
     {
+        if (gameWon) return;
+
         CheckSpawnCar();
 
         if (!gameStarted) return;
@@ -138,7 +150,7 @@ public class GameManager : MonoBehaviour
         if (nextStatusTimer >= nextStatusTime.value)
         {
             nextStatusTimer = 0;
-            UpdateStatus(nextStatuses[0].prediction, false);
+            UpdateStatus(nextStatuses[0].predictions, false);
         }
     }
 
@@ -168,8 +180,8 @@ public class GameManager : MonoBehaviour
         gameStarted = false;
     }
 
-    void GameWin()
+    void GameWin(object data = null)
     {
-
+        gameWon = true;
     }
 }

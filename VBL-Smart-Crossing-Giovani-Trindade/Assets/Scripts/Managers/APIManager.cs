@@ -94,10 +94,10 @@ public class Status
 }
 
 [System.Serializable]
-public class PredictedStatusItem
+public class PredictedStatusItem 
 {
     public int estimated_time;
-    public Status prediction;
+    public Status predictions;
 }
 
 [System.Serializable]

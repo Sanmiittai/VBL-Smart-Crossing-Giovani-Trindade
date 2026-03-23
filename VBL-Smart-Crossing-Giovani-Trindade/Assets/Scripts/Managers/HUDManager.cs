@@ -24,6 +24,7 @@ public class HUDManager : MonoBehaviour
     {
         EventManager.AddListener(EventType.HUDUpdate, InformationUpdate);
         EventManager.AddListener(EventType.LevelHUDUpdate, UpdateLevel);
+        EventManager.AddListener(EventType.GameWin, (object data) => gameStarted = false);
         EventManager.AddListener(EventType.GameStart, GameStarted);
         EventManager.AddListener(EventType.GameOver, OnGameOver);
     }
@@ -32,6 +33,7 @@ public class HUDManager : MonoBehaviour
     {
         EventManager.RemoveListener(EventType.HUDUpdate, InformationUpdate);
         EventManager.RemoveListener(EventType.LevelHUDUpdate, UpdateLevel);
+        EventManager.RemoveListener(EventType.GameWin, (object data) => gameStarted = false);
         EventManager.RemoveListener(EventType.GameStart, GameStarted);
         EventManager.RemoveListener(EventType.GameOver, OnGameOver);
     }
