@@ -32,8 +32,11 @@ public enum EventType
     StatusChanged,
     ResetAPIState,
     LevelAdvance,
+    GameStart,
     GameOver,
     SpawnCar,
     RemoveCar,
-    AverageSpeedChange
+    AverageSpeedChange,
+    HUDUpdate,
+    LevelHUDUpdate
 }

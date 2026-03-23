@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] FloatVariable playerSpeedMultiplier;
     [SerializeField] FloatVariable averageSpeed;
     [SerializeField] FloatVariable nextStatusTime;
-    [SerializeField] FloatVariable levelTime;
 
     [SerializeField] IntVariable currentLevel;
 
+    float levelTime;
     float spawnInterval = 1;
     float spawnTimer;
     float crossingTimer;
@@ -76,7 +76,9 @@ public class GameManager : MonoBehaviour
             nextStatuses.Clear();
             nextStatuses = predictedStatuses.ToList();
 
-            levelTime.value = nextStatuses[^1].estimated_time / 1000;
+            levelTime = nextStatuses[^1].estimated_time / 1000;
+
+            EventManager.InvokeEvent(EventType.LevelHUDUpdate, levelTime);
 
             crossingTimer = 0;
         }
@@ -112,6 +114,7 @@ public class GameManager : MonoBehaviour
         if (!isTrafficChange)
             nextStatuses.RemoveAt(0);
 
+        EventManager.InvokeEvent(EventType.HUDUpdate, currentStatus);
         EventManager.InvokeEvent(EventType.AverageSpeedChange);
 
         nextStatusTime.value = nextStatuses[0].estimated_time / 1000;
@@ -143,7 +146,7 @@ public class GameManager : MonoBehaviour
     {
         crossingTimer += Time.deltaTime;
 
-        if (crossingTimer >= levelTime.value)
+        if (crossingTimer >= levelTime)
         {
             EventManager.InvokeEvent(EventType.GameOver);
         }
