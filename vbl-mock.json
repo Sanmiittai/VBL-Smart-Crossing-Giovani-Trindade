@@ -1,0 +1,170 @@
+{
+  "uuid": "42e5a20a-a2fe-4bf5-8809-4366a4cac63d",
+  "lastMigration": 33,
+  "name": "VBL-Smart-Crossing",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "a67c8bf7-fc09-447b-b097-ccf7810e111b",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "v1/traffic/status",
+      "responses": [
+        {
+          "uuid": "d0902d5d-46d6-48cd-9607-3021d637664f",
+          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.8,\n    \"averageSpeed\": 40.0,\n    \"weather\": \"sunny\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 6000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.5,\n        \"averageSpeed\": 50.0,\n        \"weather\": \"clouded\"\n      }\n    },\n    {\n      \"estimated_time\": 5000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    },\n    {\n      \"estimated_time\": 20000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "816082bb-daba-409f-8475-81993c68b2f2",
+          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.4,\n    \"averageSpeed\": 40.0,\n    \"weather\": \"foggy\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 4000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 70.0,\n        \"weather\": \"sunny\"\n      }\n    },\n    {\n      \"estimated_time\": 6000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.3,\n        \"averageSpeed\": 60.0,\n        \"weather\": \"clouded\"\n      }\n    },\n    {\n      \"estimated_time\": 19000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "92d7e761-871c-4bf1-9601-50fb24a502d8",
+          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.8,\n    \"averageSpeed\": 20.0,\n    \"weather\": \"heavy rain\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 5500,\n      \"predictions\": {\n        \"vehicleDensity\": 0.5,\n        \"averageSpeed\": 50.0,\n        \"weather\": \"clouded\"\n      }\n    },\n    {\n      \"estimated_time\": 2500,\n      \"predictions\": {\n        \"vehicleDensity\": 0.1,\n        \"averageSpeed\": 90.0,\n        \"weather\": \"foggy\"\n      }\n    },\n    {\n      \"estimated_time\": 4000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 50.0,\n        \"weather\": \"sunny\"\n      }\n    },\n    {\n      \"estimated_time\": 18000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "b95cb299-91bc-4d05-bf41-0e396b51453f",
+          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.7,\n    \"averageSpeed\": 40.0,\n    \"weather\": \"sunny\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 8000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.9,\n        \"averageSpeed\": 20.0,\n        \"weather\": \"heavy rain\"\n      }\n    },\n    {\n      \"estimated_time\": 4000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 30.0,\n        \"weather\": \"light rain\"\n      }\n    },\n    {\n      \"estimated_time\": 17000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "b1a4079d-a2ce-41a4-9f75-862d73d81096",
+          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.7,\n    \"averageSpeed\": 40.0,\n    \"weather\": \"clouded\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 2000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.5,\n        \"averageSpeed\": 50.0,\n        \"weather\": \"sunny\"\n      }\n    },\n    {\n      \"estimated_time\": 5000,\n      \"predictions\": {\n        \"vehicleDensity\": 1,\n        \"averageSpeed\": 30.0,\n        \"weather\": \"foggy\"\n      }\n    },\n    {\n      \"estimated_time\": 6000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.7,\n        \"averageSpeed\": 30.0,\n        \"weather\": \"light rain\"\n      }\n    },\n    {\n      \"estimated_time\": 16000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": "SEQUENTIAL",
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "a67c8bf7-fc09-447b-b097-ccf7810e111b"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
