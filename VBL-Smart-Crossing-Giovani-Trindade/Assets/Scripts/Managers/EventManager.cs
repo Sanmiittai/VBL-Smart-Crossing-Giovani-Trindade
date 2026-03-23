@@ -33,5 +33,7 @@ public enum EventType
     ResetAPIState,
     LevelAdvance,
     GameOver,
-    SpawnCar
+    SpawnCar,
+    RemoveCar,
+    AverageSpeedChange
 }

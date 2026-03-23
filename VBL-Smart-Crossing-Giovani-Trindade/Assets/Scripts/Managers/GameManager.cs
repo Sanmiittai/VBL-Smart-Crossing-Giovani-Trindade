@@ -112,6 +112,8 @@ public class GameManager : MonoBehaviour
         if (!isTrafficChange)
             nextStatuses.RemoveAt(0);
 
+        EventManager.InvokeEvent(EventType.AverageSpeedChange);
+
         nextStatusTime.value = nextStatuses[0].estimated_time / 1000;
     }
 
