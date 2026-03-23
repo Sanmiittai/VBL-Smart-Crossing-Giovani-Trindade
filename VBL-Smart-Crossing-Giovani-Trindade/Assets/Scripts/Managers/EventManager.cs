@@ -31,5 +31,7 @@ public enum EventType
 {
     StatusChanged,
     ResetAPIState,
-    LevelAdvance
+    LevelAdvance,
+    GameOver,
+    SpawnCar
 }
