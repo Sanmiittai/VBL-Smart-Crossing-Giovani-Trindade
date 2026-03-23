@@ -1280,13 +1280,13 @@ MonoBehaviour:
   crossings:
   - spawnPointParent: {fileID: 476524164379451413}
     spawnPoints: []
-    crossingDirection: {x: 0, y: 0, z: 0}
+    crossingDirection: {x: 1, y: 0, z: 0}
   - spawnPointParent: {fileID: 8374120389372489916}
     spawnPoints: []
-    crossingDirection: {x: 0, y: 0, z: 0}
+    crossingDirection: {x: -1, y: 0, z: 0}
   - spawnPointParent: {fileID: 3200132817409959426}
     spawnPoints: []
-    crossingDirection: {x: 0, y: 0, z: 0}
+    crossingDirection: {x: 1, y: 0, z: 0}
 --- !u!1001 &1177712698934029700
 PrefabInstance:
   m_ObjectHideFlags: 0
