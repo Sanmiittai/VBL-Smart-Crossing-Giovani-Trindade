@@ -66,13 +66,9 @@ public class GameManager : MonoBehaviour
     void NewStatusReceived(object data = null)
     {
         if (currentStatus == null)
-        {
             ChangeCurrentTraffic((TrafficResponse)data);
-        }
         else
-        {
             nextTraffic = (TrafficResponse)data;
-        }
     }
 
     //Updates the current status and next statuses to the received data
@@ -129,9 +125,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (!isTrafficChange)
-        {
             nextStatuses.RemoveAt(0);
-        }
 
         nextStatusTime.value = nextStatuses[0].estimated_time / 1000;
 
@@ -174,9 +168,7 @@ public class GameManager : MonoBehaviour
         crossingTimer += Time.deltaTime;
 
         if (crossingTimer >= levelTime)
-        {
             EventManager.InvokeEvent(EventType.GameOver);
-        }
     }
 
     //Checks if the time to spawn another car has been met

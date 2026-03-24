@@ -32,6 +32,7 @@ public class Car : MonoBehaviour
     public void ChangeSpeed(object data = null)
     {
         if (deactivated) return;
+        
         float myVelocity = averageSpeed.value / 100f * vehicleSpeed;
         Vector3 movementDirection = currentDirection * myVelocity;
         myRigidbody.linearVelocity = movementDirection;

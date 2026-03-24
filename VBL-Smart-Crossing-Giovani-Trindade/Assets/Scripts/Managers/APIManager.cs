@@ -43,9 +43,7 @@ public class APIManager : MonoBehaviour
             yield return request.SendWebRequest();
 
             if (request.result != UnityWebRequest.Result.Success)
-            {
                 Debug.LogError($"[API] Erros: {request.error}");
-            }
             else if (gameStart)
             {
                 NewAPICall();
@@ -62,9 +60,7 @@ public class APIManager : MonoBehaviour
             yield return request.SendWebRequest();
 
             if (request.result != UnityWebRequest.Result.Success)
-            {
                 Debug.LogError($"[API] Error: {request.error}");
-            }
             else
             {
                 string jsonResponse = request.downloadHandler.text;
@@ -80,13 +76,9 @@ public class APIManager : MonoBehaviour
         TrafficResponse data = JsonUtility.FromJson<TrafficResponse>(jsonResponse);
 
         if (data != null)
-        {
             EventManager.InvokeEvent(EventType.StatusChanged, data);
-        }
         else
-        {
             Debug.LogError("Data null");
-        }
     }
 }
 
