@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] IntVariable currentLevel;
 
+    [SerializeField] int maxLevel;
+    [SerializeField] float baseSpawnInterval;
+    [SerializeField] float[] weatherSpeedMultipliers;
+
     float levelTime;
     float spawnInterval = 1;
     float spawnTimer;
@@ -55,7 +59,7 @@ public class GameManager : MonoBehaviour
     void AdvanceLevel(object data = null)
     {
         currentLevel.value++;
-        if (currentLevel.value > 5)
+        if (currentLevel.value > maxLevel)
             EventManager.InvokeEvent(EventType.GameWin);
         else
             ChangeCurrentTraffic(nextTraffic);
@@ -103,24 +107,28 @@ public class GameManager : MonoBehaviour
     {
         currentStatus = nextStatus;
         averageSpeed.value = currentStatus.averageSpeed;
-        spawnInterval = 0.5f / (currentStatus.vehicleDensity * 2);
+
+        //Spawn interval calculated with a base of 0.5 seconds divided by the 
+        //vehicle density multiplied by two to make a higher vehicle density
+        //equals to a smaller spawn interval
+        spawnInterval = baseSpawnInterval / (currentStatus.vehicleDensity * 2);
 
         switch (currentStatus.weather)
         {
             case "sunny":
-                playerSpeedMultiplier.value = 1f;
+                playerSpeedMultiplier.value = weatherSpeedMultipliers[0];
                 break;
             case "clouded":
-                playerSpeedMultiplier.value = 0.8f;
+                playerSpeedMultiplier.value = weatherSpeedMultipliers[1];
                 break;
             case "foggy":
-                playerSpeedMultiplier.value = 0.8f;
+                playerSpeedMultiplier.value = weatherSpeedMultipliers[2];
                 break;
             case "light rain":
-                playerSpeedMultiplier.value = 0.6f;
+                playerSpeedMultiplier.value = weatherSpeedMultipliers[3];
                 break;
             case "heavy rain":
-                playerSpeedMultiplier.value = 0.4f;
+                playerSpeedMultiplier.value = weatherSpeedMultipliers[4];
                 break;
         }
 

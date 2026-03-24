@@ -74,7 +74,7 @@
         },
         {
           "uuid": "b95cb299-91bc-4d05-bf41-0e396b51453f",
-          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.7,\n    \"averageSpeed\": 40.0,\n    \"weather\": \"sunny\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 8000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.9,\n        \"averageSpeed\": 20.0,\n        \"weather\": \"heavy rain\"\n      }\n    },\n    {\n      \"estimated_time\": 4000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 30.0,\n        \"weather\": \"light rain\"\n      }\n    },\n    {\n      \"estimated_time\": 17000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
+          "body": "{\n  \"current_status\": {\n    \"vehicleDensity\": 0.7,\n    \"averageSpeed\": 40.0,\n    \"weather\": \"sunny\"\n  },\n  \"predicted_status\": [\n    {\n      \"estimated_time\": 8000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.8,\n        \"averageSpeed\": 20.0,\n        \"weather\": \"heavy rain\"\n      }\n    },\n    {\n      \"estimated_time\": 4000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 30.0,\n        \"weather\": \"light rain\"\n      }\n    },\n    {\n      \"estimated_time\": 19000,\n      \"predictions\": {\n        \"vehicleDensity\": 0.6,\n        \"averageSpeed\": 40.0,\n        \"weather\": \"light rain\"\n      }\n    }\n  ]\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "",

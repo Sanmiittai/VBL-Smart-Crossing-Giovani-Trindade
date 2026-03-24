@@ -3315,6 +3315,14 @@ MonoBehaviour:
   averageSpeed: {fileID: 11400000, guid: bf64ea0c4a1b40043b8334acf25c06d3, type: 2}
   nextStatusTime: {fileID: 11400000, guid: 1eae2877574f60f478c7be7d41b7cdbb, type: 2}
   currentLevel: {fileID: 11400000, guid: 7edbdf20e01837f4da4798f5639520cb, type: 2}
+  maxLevel: 5
+  baseSpawnInterval: 0.5
+  weatherSpeedMultipliers:
+  - 1
+  - 0.8
+  - 0.8
+  - 0.6
+  - 0.4
 --- !u!4 &1717565190
 Transform:
   m_ObjectHideFlags: 0

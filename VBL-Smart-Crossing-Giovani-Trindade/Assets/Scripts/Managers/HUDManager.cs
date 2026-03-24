@@ -44,6 +44,13 @@ public class HUDManager : MonoBehaviour
         hud_Group.alpha = 1;
         gameStarted = true;
     }
+    
+    //Hides the HUD on Game Over and Game Win
+    void OnHideHud(object data = null)
+    {
+        gameStarted = false;
+        hud_Group.alpha = 0;
+    }
 
     //Constantly updates the remaining level timer and status timer
     void Update()
@@ -56,12 +63,6 @@ public class HUDManager : MonoBehaviour
         statusTimer -= Time.deltaTime;
     }
 
-    //Hides the HUD on Game Over and Game Win
-    void OnHideHud(object data = null)
-    {
-        gameStarted = false;
-        hud_Group.alpha = 0;
-    }
 
     //Updates the current level information on the HUD
     public void UpdateLevel(object data = null)
