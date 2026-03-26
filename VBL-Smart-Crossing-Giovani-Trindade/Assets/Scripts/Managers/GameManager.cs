@@ -11,8 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] IntVariable currentLevel;
 
     [SerializeField] int maxLevel;
-    [SerializeField] float baseSpawnInterval;
-    [SerializeField] float[] weatherSpeedMultipliers;
+    [SerializeField]
+    [Min(0.1f)]
+    [Tooltip("This value is equal to the spawn interval in seconds when the vehicle density is 0.5. To follow the guidelines, it's default is 2, I recommend 0.5 for a more realistic vehicle density")]
+    float baseSpawnInterval = 2;
+    [SerializeField] float[] weatherSpeedMultipliers = new float[5] { 1f, 0.8f, 0.8f, 0.6f, 0.4f };
 
     float levelTime;
     float spawnInterval = 1;
@@ -108,9 +111,10 @@ public class GameManager : MonoBehaviour
         currentStatus = nextStatus;
         averageSpeed.value = currentStatus.averageSpeed;
 
-        //Spawn interval calculated with a base of 0.5 seconds divided by the 
+        //Spawn interval calculated with a base interval divided by the 
         //vehicle density multiplied by two to make a higher vehicle density
-        //equals to a smaller spawn interval
+        //equals to a smaller spawn interval. The base spawn interval is equals
+        //the spawn time in seconds when the vehicle density is equals 0.5
         spawnInterval = baseSpawnInterval / (currentStatus.vehicleDensity * 2);
 
         switch (currentStatus.weather)
